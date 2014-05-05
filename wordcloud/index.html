@@ -1,0 +1,59 @@
+<script src="https://code.jquery.com/jquery-git2.min.js"></script>
+
+<!-- D3 Libs -->
+<script src="js/lib/d3.js"></script>
+<script src="js/lib/d3.layout.cloud.js"></script>
+
+
+
+<script src="js/getRecipients.js"></script>
+<script src="js/getProjects.js"></script>
+<script src="js/main.js"></script>
+<script src="js/test.js"></script>
+<script>
+
+$(document).ready(function () {
+
+  var options = {
+    NUM_PROJECTS: 300,
+    NUM_WORDS_TO_DRAW:19,
+    USE_DESCRIPTION: false  //use the project title and description or just title.
+  };
+
+  var filter = {
+    src: '1,2,3,4,5,6,7,3249668',         // Use all sources
+    ro: 110593668,                        // Recipient Org is Malawi
+    y: '2005,2006,2007,2008,2009,2010',   // Years 2005-2010
+    t: 1   ,                              // Transaction type comittments.
+  //  order:'project_id',            // Order by title                         
+  //  sort:-1                 // Sort by desc. 
+  };
+
+  //Print list of recipients:
+  getRecipients(true, function(recipients){
+    console.log('recipients',recipients);
+    for(var i = 0; i<recipients.length;i++){
+      $('#recipient-dropdown').append('<option value="'+recipients[i].id+'">'+recipients[i].name+'</option>');
+    }
+
+    //Run initial word map
+    filter.ro = $('#recipient-dropdown').val();
+    app.start(filter, options);
+  });
+
+  $('#recipient-dropdown').change(function (evt) {
+      filter.ro = $(this).val();
+      app.start(filter, options);
+    });
+});
+
+
+</script>
+<body>
+  <div>Recipient
+    <select id="recipient-dropdown">
+    </select>
+  </div>
+  <div id="word-cloud"></div>
+
+</body>
