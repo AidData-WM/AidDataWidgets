@@ -4,10 +4,7 @@
 <script src="js/lib/d3.js"></script>
 <script src="js/lib/d3.layout.cloud.js"></script>
 
-
-
-<script src="js/getRecipients.js"></script>
-<script src="js/getProjects.js"></script>
+<script src="../aiddata-lib/main.js"></script>
 <script src="js/main.js"></script>
 <script src="js/test.js"></script>
 <script>
@@ -30,7 +27,7 @@ $(document).ready(function () {
   };
 
   //Print dropdown of recipients:
-  getRecipients(true, function(recipients){
+  AidData.getRecipients(true, function(recipients){
     console.log('recipients',recipients);
     for(var i = 0; i<recipients.length;i++){
       $('#recipient-dropdown').append('<option value="'+recipients[i].id+'">'+recipients[i].name+'</option>');
@@ -46,40 +43,39 @@ $(document).ready(function () {
       app.start(filter, options);
     });
 
+  //Convert SVG into an image.
   $("#btn-img").on("click", function(){
-
-  var html = d3.select("svg")
-        .attr("version", 1.1)
-        .attr("xmlns", "http://www.w3.org/2000/svg")
-        .node().parentNode.innerHTML;
- 
-  //console.log(html);
-  var imgsrc = 'data:image/svg+xml;base64,'+ btoa(html);
-  var img = '<img src="'+imgsrc+'">'; 
-  d3.select("#svgdataurl").html(img);
- 
- 
-  var canvas = document.querySelector("canvas"),
+    var html = d3.select("svg")
+          .attr("version", 1.1)
+          .attr("xmlns", "http://www.w3.org/2000/svg")
+          .node().parentNode.innerHTML;
+   
+    //console.log(html);
+    var imgsrc = 'data:image/svg+xml;base64,'+ btoa(html);
+    var img = '<img src="'+imgsrc+'">'; 
+    d3.select("#svgdataurl").html(img);
+   
+   
+    var canvas = document.querySelector("canvas"),
     context = canvas.getContext("2d");
- 
-  var image = new Image;
-  image.src = imgsrc;
-  image.onload = function() {
-    context.drawImage(image, 0, 0);
- 
-    var canvasdata = canvas.toDataURL("image/png");
- 
-    //Put image on the page.
-    // var pngimg = '<img src="'+canvasdata+'">'; 
-    // d3.select("#pngdataurl").html(pngimg);
+   
+    var image = new Image;
+    image.src = imgsrc;
+    image.onload = function() {
+      context.drawImage(image, 0, 0);
+   
+      var canvasdata = canvas.toDataURL("image/png");
+   
+      //Put image on the page.
+      // var pngimg = '<img src="'+canvasdata+'">'; 
+      // d3.select("#pngdataurl").html(pngimg);
 
-    var a = document.createElement("a");
-    a.download = "sample.png";
-    a.href = canvasdata;
-    a.click();
-  };
- 
-});
+      var a = document.createElement("a");
+      a.download = "sample.png";
+      a.href = canvasdata;
+      a.click();
+    };
+  });
 });
 
 

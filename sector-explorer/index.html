@@ -1,0 +1,85 @@
+<script src="https://code.jquery.com/jquery-git2.min.js"></script>
+
+<!-- D3 Libs -->
+<!-- <script src="js/lib/d3.js"></script> -->
+
+
+<style>
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size:14px;
+  margin: 5px;
+}
+
+form {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.node {
+  border: solid 1px white;
+  font: 12px Helvetica, sans-serif;
+  line-height: 15px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
+
+
+</style>
+
+<script>
+
+$(document).ready(function () {
+	var options = {		
+		useTotals: true,
+		filter: {
+		    src: '1,2,3,4,5,6,7,3249668',         // Use all sources
+		    ro: 110593668,                        // Recipient Org is Malawi
+		    y: '1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014',   // Years 1994-2014
+		    t: 1   ,                              // Transaction type comittments.
+		    size: 5,
+		    order:'total',            // Order by title                         
+		    sort:-1                 // Sort by desc. 
+		    //dashboardType:1
+	  	}
+	};
+
+	//Print dropdown of recipients:
+	AidData.getRecipients(true, function(recipients){
+		//console.log('recipients',recipients);
+		for(var i = 0; i<recipients.length;i++){
+		  $('#recipient-dropdown').append('<option value="'+recipients[i].id+'">'+recipients[i].name+'</option>');
+		}
+
+		//Run initial viz.
+		options.filter.ro = $('#recipient-dropdown').val();
+		app.start(options);
+	});
+
+
+	// If dropdown changes restart viz.
+	$('#recipient-dropdown').change(function (evt) {
+	  options.filter.ro = $(this).val();
+	  app.start(options);
+	});
+});
+</script>
+<body>
+
+<h3>Sector Explorer</h3>
+<p>Builds a nested view of sectors, purposes, and activites.</p>
+<form>
+	<label><input class="aggregator" type="radio" name="mode" value="total" checked> $ amount</label>
+	<label><input class="aggregator" type="radio" name="mode" value="count"> Num Projects</label>
+	<select id="recipient-dropdown"></select>
+</form>
+<div id="sector-explorer" style="width:100%;height:100%">Loading...</div>
+
+<script src="js/lib/d3.v3.js"></script>
+<script src="js/treemap.js"></script>
+<script src="../aiddata-lib/main.js"></script>
+<script src="js/main.js"></script>
+</body>
