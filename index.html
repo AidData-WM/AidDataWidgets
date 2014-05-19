@@ -1,20 +1,97 @@
-<h4>Visualizations</h4>
-<p>Here is a collection of widgets built on top of the AidData API.</p>
-<p>Widgets resize to fill the window, making them well suited to being embedded in other sites.</p>
-<p>AidData API Documentation: <a href="http://aiddata.org/use-aiddatas-api" title="AidData Documentation">http://aiddata.org/use-aiddatas-api</a></p>
-<hr />
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<strong><a href="widgets/wordcloud">Word Cloud</a></strong><br />
-<p>Embed code: </p>
-<code>&lt;iframe src=&quot;http://davidrs.github.io/AidDataWidgets/widgets/wordcloud/index.html&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/iframe&gt;</code>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
 
-<hr />
-<strong><a href="widgets/sector-explorer/index.html">Sector Explorer - Interactive</a></strong><br />
-<p>Embed code: </p>
-<code>&lt;iframe src=&quot;http://davidrs.github.io/AidDataWidgets/widgets/sector-explorer/index.html&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/iframe&gt;</code>
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">AidData Embeddable Widgets</a>
+        </div>
+      </div>
+    </div>
 
-<hr />
-<strong><a href="widgets/sector-explorer/index-classic.html">Sector Explorer - Classic</a></strong><br />
-<p>Embed code: </p>
-<code>&lt;iframe src=&quot;http://davidrs.github.io/AidDataWidgets/widgets/sector-explorer/index-classic.html&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/iframe&gt;</code>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>AidData Visualizations</h1>
+        <p>Below you will find a collection of open source widgets built on top of the AidData API.<br/>
+        	Please feel free to embed these wigets in your own websites.</p>
+        <p>
+        	<a class="btn btn-primary btn-lg" role="button" href="http://aiddata.org/use-aiddatas-api">API Docs &raquo;</a>
+        	<a class="btn btn-info btn-lg" role="button" href="https://github.com/davidrs/AidDataWidgets">GitHub &raquo;</a>
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-6">
+        	<a href="widgets/wordcloud/index.html" ><img src="img/wordcloud.png" class="img-thumbnail" width="190px"></a>
+          <h2>Word Cloud</h2>
+          <p>Most popular words in aid project descriptions for a country.</p><p>Embed code: </p>
+			<p class="small">&lt;iframe src=&quot;http://davidrs.github.io/AidDataWidgets/widgets/wordcloud/index.html&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/iframe&gt;</p>
 
+          <p><a class="btn btn-default" href="widgets/wordcloud/index.html" role="button">View &raquo;</a></p>
+        </div>
+        <div class="col-md-6">
+        	<a href="widgets/sector-explorer/index-classic.html" ><img src="img/sector1.png" class="img-thumbnail" width="190px"></a>
+          <h2>Sector Explorer - Interactive</h2>
+          <p>Allows users to navigate most popular areas of aid investment in a country.</p><p>Embed code: </p>
+			<p class="small">&lt;iframe src=&quot;http://davidrs.github.io/AidDataWidgets/widgets/sector-explorer/index.html&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/iframe&gt;</p>
+
+          <p><a class="btn btn-default" href="widgets/sector-explorer/index.html" role="button">View &raquo;</a></p>
+       </div>
+  </div>
+<hr/>
+      <div class="row">
+        <div class="col-md-6">
+			<a href="widgets/sector-explorer/index.html" ><img src="img/sector2.png" alt="Sector Explorer" class="img-thumbnail" width="190px"></a>
+          <h2>Sector Explorer - Classic</h2>          
+          <p>Allows users to see most popular areas of aid investment in a country by either Total Cost or Number of Projects.</p>
+          <p>Embed code: </p>
+			<p class="small">&lt;iframe src=&quot;http://davidrs.github.io/AidDataWidgets/widgets/sector-explorer/index-classic.html&quot; width=&quot;400&quot; height=&quot;400&quot;&gt;&lt;/iframe&gt;</p>
+
+          <p><a class="btn btn-default" href="widgets/sector-explorer/index-classic.html" role="button">View  &raquo;</a></p>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>
