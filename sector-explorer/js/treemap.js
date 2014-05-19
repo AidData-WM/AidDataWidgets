@@ -4,11 +4,14 @@ var startViz = function(root) {
 // MC: The following line declares 5 variables. The 4th one creates an alias for a number formatting function. The 5th one has no value.
 // MC: Strange that he's hardcoded the width and height in here since they also appear in the CSS.
 
-var margin = {top: 25, right: 0, bottom: 0, left: 0},
+var margin = {top: 45, right: 0, bottom: 0, left: 0},
     width = $('#sector-explorer').width(),
     height = $('#sector-explorer').height() - margin.top - margin.bottom,
     formatNumber = d3.format(",.0f"),   // MC: I want one decimal place. See https://github.com/mbostock/d3/wiki/Formatting#d3_format
     transitioning;
+
+console.log( $("#sector-explorer"));
+    $("#sector-explorer").css("margin-top",margin.top+"px");
 
 // MC: Here he creates the X and Y scales, which are 1:1 and linear, ie. no scaling applied.
 
@@ -60,7 +63,7 @@ grandparent.append("rect")
 grandparent.append("text")
     .attr("x", 6)
     .attr("y", 6 - margin.top)
-    .attr("dy", ".75em");
+    .attr("dy", "1em");
 
 // MC: Loads in the data from 'budget.json'. The call is asynchronous. Once the JSON has loaded, the next 40 or so lines run.
 
@@ -219,15 +222,19 @@ grandparent.append("text")
   }
 
   function rect(rect) {
+    var color = d3.scale.category20c();
     rect.attr("x", function(d) { return x(d.x); })
         .attr("y", function(d) { return y(d.y); })
         .attr("width", function(d) { return x(d.x + d.dx) - x(d.x); })
         .attr("height", function(d) { return y(d.y + d.dy) - y(d.y); })
-        .attr("rx","5px");
+        .attr("rx","5px")
+        .attr("fill", function(d) {/*TODO: keep 'sector code' in d obj so colors can be associated with sector.   */ 
+          return '#f6e9e0';});
+          //return color(d.area)});
   }
 
   function name(d) {
-    return d.parent ? name(d.parent) + " / " + d.name : d.name;   // MC: Recursive. If there is no parent just return the name attribute of this node, otherwise return the name of the parent node followed by '/' and the name attribute of this node
+    return d.parent ? '< '+name(d.parent) + " / " + d.name : d.name;   // MC: Recursive. If there is no parent just return the name attribute of this node, otherwise return the name of the parent node followed by '/' and the name attribute of this node
   }
 
   function intToWord(number) {
