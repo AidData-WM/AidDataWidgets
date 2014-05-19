@@ -1,0 +1,26 @@
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size:14px;
+  margin: 5px;
+}
+
+form {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.node {
+  border: solid 1px white;
+  font: 12px Helvetica, sans-serif;
+  line-height: 15px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
+    
+  #sector-explorer {
+    width: 100%;
+    height: 90%;
+  }

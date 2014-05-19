@@ -2,7 +2,7 @@
 	<head>
 	<title>AidData Sector Explorer</title>
 	<script src="https://code.jquery.com/jquery-git2.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/main-classic.css">
 	<script>
 
 	$(document).ready(function () {
@@ -44,11 +44,13 @@
 	<body>
 		<form>
 			<select id="recipient-dropdown"></select>
+			<label><input class="aggregator" type="radio" name="mode" value="total" checked>Project Cost</label>
+			<label><input class="aggregator" type="radio" name="mode" value="count"> Number of Projects</label>
 		</form>
 		<div id="sector-explorer">Loading...</div>
 
 		<script src="js/lib/d3.v3.js"></script>
-		<script src="js/treemap.js"></script>
+		<script src="js/treemapClassic.js"></script>
 		<script src="../aiddata-lib/main.js"></script>
 		<script src="js/main.js"></script>
 	</body>
