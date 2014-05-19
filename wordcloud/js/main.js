@@ -6,7 +6,7 @@ var app = {
   // Run the app.
   start: function(filter, options){
     this.options = options;
-    getProjects(filter, options.NUM_PROJECTS , this.processProjects);
+    AidData.getProjects(filter, options.NUM_PROJECTS , this.processProjects);
   },
 
   processProjects: function(projects){
