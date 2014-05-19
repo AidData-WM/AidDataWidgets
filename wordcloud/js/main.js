@@ -63,11 +63,13 @@ var app = {
   generateViz: function(words, maxValue){
 
     var fill = d3.scale.category20();
+    var width = $('#word-cloud').width();
+    var height = $('#word-cloud').height();
 
-    d3.layout.cloud().size([450, 450])
+    d3.layout.cloud().size([width, height])
         .words(words.map(function(d) {
           console.log(d.key + '  -  '+d.value);
-          return {text: d.key, size: (d.value*40/maxValue)};
+          return {text: d.key, size: (d.value*(width/10)/maxValue)};
         }))
         .padding(3)
         .rotate(function() { return ~~(Math.random() * 3) * 0 - 0; })
@@ -77,12 +79,13 @@ var app = {
         .start();
 
     function draw(words) {
+
       $("#word-cloud").html('');
       d3.select("#word-cloud").append("svg")
-          .attr("width", 450)
-          .attr("height", 450)
+          .attr("width", width)
+          .attr("height", height)
         .append("g")
-          .attr("transform", "translate(225,225)")
+          .attr("transform", "translate("+width/2+","+height/2+")")
         .selectAll("text")
           .data(words)
         .enter().append("text")
