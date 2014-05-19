@@ -26,10 +26,11 @@ tspan	{
 
 .grandparent text {
   font-weight: bold;
+  font-size: medium;
 }
 
 rect {
-  fill: none;
+  /*fill: none;*/
   stroke: #fff;
 }
 
