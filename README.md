@@ -1,7 +1,9 @@
 AidDataWidgets
 ==============
 
-A collection of international aid widgets that use the AidData API: http://aiddata.org/use-aiddatas-api
+A collection of international aid widgets that use the AidData API: 
+API Docs: http://aiddata.org/use-aiddatas-api
+Widget Browser: http://davidrs.github.io/AidDataWidgets/
 
 
 simple-samples
