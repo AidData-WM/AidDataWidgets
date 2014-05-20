@@ -26,7 +26,7 @@ $(document).ready(function () {
 
   //Print dropdown of recipients:
   AidData.getRecipients(true, function(recipients){
-    console.log('recipients',recipients);
+    $('#recipient-dropdown').html('<option value="">All Countries</option>');
     for(var i = 0; i<recipients.length;i++){
       $('#recipient-dropdown').append('<option value="'+recipients[i].id+'">'+recipients[i].name+'</option>');
     }
